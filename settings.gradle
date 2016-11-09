@@ -1,0 +1,3 @@
+rootProject.name = 'fun-with-rythm'
+include 'src'
+
