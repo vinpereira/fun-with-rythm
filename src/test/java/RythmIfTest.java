@@ -41,13 +41,13 @@ public class RythmIfTest {
     public void shouldReturnAge() {
         String query = ifQuery +
                 "@if (age < 8) {\n" +
-                "@age < 8\n" +
+                    "@age < 8\n" +
                 "} else if (age < 16) {\n" +
-                "@age < 16\n" +
+                    "@age < 16\n" +
                 "} else {\n" +
-                "@age >= 16" +
+                    "@age >= 16" +
                 "}";
-        System.out.println(ifParams);
+
         assertEquals("IF Statement should return Age", Rythm.render(query, JSONWrapper.wrap(ifParams)), "10 < 16");
     }
 
@@ -55,7 +55,7 @@ public class RythmIfTest {
     public void shouldHaveSmartEvaluateString() {
         String query = ifQuery +
                 "@if (name) {\n" +
-                "name is true\n" +
+                    "name is true\n" +
                 "}";
 
         assertEquals("IF Statement should have Smart Evaluate a String", Rythm.render(query, JSONWrapper.wrap(ifParams)), "name is true");
@@ -65,9 +65,9 @@ public class RythmIfTest {
     public void shouldHaveSmartEvaluateEmptyString() {
         String query = ifQuery +
                 "@if (blankName) {\n" +
-                "blankName is true\n" +
+                    "blankName is true\n" +
                 "} else {\n" +
-                "blankName is false\n" +
+                    "blankName is false\n" +
                 "}";
 
         assertEquals("IF Statement should have Smart Evaluate an empty String", Rythm.render(query, JSONWrapper.wrap(ifParams)), "blankName is false");
@@ -81,17 +81,17 @@ public class RythmIfTest {
 
         String query = "@args String FALSE, String NO;\n" +
                 "@if (FALSE) {\n" +
-                "you should not reach here\n" +
+                    "you should not reach here\n" +
                 "} else {\n" +
-                "FALSE is false\n" +
+                    "FALSE is false\n" +
                 "}\n\n" +
                 "@if (NO) {\n" +
-                "you should not reach here\n" +
+                    "you should not reach here\n" +
                 "} else {\n" +
-                "NO is false\n" +
+                    "NO is false\n" +
                 "}";
 
-        assertEquals("IF Statement should have Smart Evaluate a 'false' or 'no' Strings", Rythm.render(query, params), "FALSE is false\n" +
+        assertEquals("IF Statement should have Smart Evaluate a 'false' or 'no' Strings", Rythm.render(query, JSONWrapper.wrap(params)), "FALSE is false\n" +
                 "NO is false");
     }
 
@@ -109,8 +109,7 @@ public class RythmIfTest {
                     "money is zero\n" +
                 "}";
 
-        System.out.println(ifParams);
-        assertEquals("IF Statement should have Smart Evaluate a Number", Rythm.render(query, ifParams), "age is non-zero\n" +
+        assertEquals("IF Statement should have Smart Evaluate a Number", Rythm.render(query, JSONWrapper.wrap(ifParams)), "age is non-zero\n" +
                 "money is zero");
     }
 
@@ -118,17 +117,17 @@ public class RythmIfTest {
     public void shouldHaveSmartEvaluateCollections() {
         String query = ifQuery +
                 "@if (names) {\n" +
-                "names is not empty\n" +
+                    "names is not empty\n" +
                 "} else {\n" +
-                "@names is empty\n" +
+                    "@names is empty\n" +
                 "}\n\n" +
                 "@if (emptyList) {\n" +
-                "emptyList is not empty\n" +
+                    "emptyList is not empty\n" +
                 "} else {\n" +
-                "emptyList is empty\n" +
+                    "emptyList is empty\n" +
                 "}";
 
-        assertEquals("IF Statement should have Smart Evaluate a Collection", Rythm.render(query, ifParams), "name is not empty\n" +
+        assertEquals("IF Statement should have Smart Evaluate a Collection", Rythm.render(query, JSONWrapper.wrap(ifParams)), "names is not empty\n" +
                 "emptyList is empty");
     }
 }
