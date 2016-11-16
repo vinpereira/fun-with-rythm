@@ -15,7 +15,7 @@ public class RythmTest {
         String query = "@args String who; " +
                        "Hello @who!";
 
-        assertEquals("Should return Hello World", Rythm.render(query, JSONWrapper.wrap(params)), "Hello World!");
+        assertEquals("Should return Hello World", "Hello World!", Rythm.render(query, JSONWrapper.wrap(params)));
     }
 
     @Test
@@ -25,6 +25,6 @@ public class RythmTest {
         String query = "@args String who; " +
                        "Hello @who.capFirst()!";
 
-        assertEquals("Should return Hello World", Rythm.render(query, JSONWrapper.wrap(params)), "Hello World!");
+        assertEquals("Should return Hello World", "Hello World!", Rythm.render(query, JSONWrapper.wrap(params)));
     }
 }

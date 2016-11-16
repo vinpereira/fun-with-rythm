@@ -34,7 +34,7 @@ public class RythmIfTest {
         String query = ifQuery +
                 "Hi, @name!";
 
-        assertEquals("IF Statement should return Name", Rythm.render(query, JSONWrapper.wrap(ifParams)), "Hi, Mike!");
+        assertEquals("IF Statement should return Name", "Hi, Mike!", Rythm.render(query, JSONWrapper.wrap(ifParams)));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class RythmIfTest {
                     "@age >= 16" +
                 "}";
 
-        assertEquals("IF Statement should return Age", Rythm.render(query, JSONWrapper.wrap(ifParams)), "10 < 16");
+        assertEquals("IF Statement should return Age", "10 < 16", Rythm.render(query, JSONWrapper.wrap(ifParams)));
     }
 
     @Test
@@ -58,7 +58,10 @@ public class RythmIfTest {
                     "name is true\n" +
                 "}";
 
-        assertEquals("IF Statement should have Smart Evaluate a String", Rythm.render(query, JSONWrapper.wrap(ifParams)), "name is true");
+        assertEquals("IF Statement should have Smart Evaluate a String",
+                    "name is true",
+                    Rythm.render(query, JSONWrapper.wrap(ifParams))
+        );
     }
 
     @Test
@@ -70,7 +73,10 @@ public class RythmIfTest {
                     "blankName is false\n" +
                 "}";
 
-        assertEquals("IF Statement should have Smart Evaluate an empty String", Rythm.render(query, JSONWrapper.wrap(ifParams)), "blankName is false");
+        assertEquals("IF Statement should have Smart Evaluate an empty String",
+                    "blankName is false",
+                    Rythm.render(query, JSONWrapper.wrap(ifParams))
+        );
     }
 
     @Test
@@ -91,8 +97,10 @@ public class RythmIfTest {
                     "NO is false\n" +
                 "}";
 
-        assertEquals("IF Statement should have Smart Evaluate a 'false' or 'no' Strings", Rythm.render(query, JSONWrapper.wrap(params)), "FALSE is false\n" +
-                "NO is false");
+        assertEquals("IF Statement should have Smart Evaluate a 'false' or 'no' Strings",
+                "FALSE is false\n" + "NO is false",
+                Rythm.render(query, JSONWrapper.wrap(params))
+        );
     }
 
     @Test
@@ -109,8 +117,10 @@ public class RythmIfTest {
                     "money is zero\n" +
                 "}";
 
-        assertEquals("IF Statement should have Smart Evaluate a Number", Rythm.render(query, JSONWrapper.wrap(ifParams)), "age is non-zero\n" +
-                "money is zero");
+        assertEquals("IF Statement should have Smart Evaluate a Number",
+                    "age is non-zero\n" + "money is zero",
+                    Rythm.render(query, JSONWrapper.wrap(ifParams))
+        );
     }
 
     @Test
@@ -127,7 +137,9 @@ public class RythmIfTest {
                     "emptyList is empty\n" +
                 "}";
 
-        assertEquals("IF Statement should have Smart Evaluate a Collection", Rythm.render(query, JSONWrapper.wrap(ifParams)), "names is not empty\n" +
-                "emptyList is empty");
+        assertEquals("IF Statement should have Smart Evaluate a Collection",
+                "names is not empty\n" + "emptyList is empty",
+                Rythm.render(query, JSONWrapper.wrap(ifParams))
+        );
     }
 }
